@@ -27,12 +27,12 @@ Programs
 *Features*: Described above.
 
 ## soc.py (formerly main.py)
-*Description*: This program is responsible for fetching the latest course data from the schedule of classes (https://act.ucsd.edu/scheduleOfClasses/scheduleOfClassesStudent.htm) for a given or the latest quarter, and uploading that data to Firebase after parsing, filtering, and comptuing some meta data (like seat tracking, waitlist, dei, etc.). 
+*Description*: This program is responsible for fetching the latest course data from the `Schedule of Classes <https://act.ucsd.edu/scheduleOfClasses/scheduleOfClassesStudent.htm/>`_ for a given or the latest quarter, and uploading that data to Firebase after parsing, filtering, and comptuing some meta data (like seat tracking, waitlist, dei, etc.). 
 
-*Dependencies*: requires catalog.py information in database to update the descriptions, prerequisites, and restrictions of each course. *An important note*: we can't scrape this information from the schedule of classes itself. If we take a look, clicking on the course title, like _Advanced Data Structures_ (from CSE 100) redirects us to the catalog description (https://ucsd.edu/catalog/front/courses.html). 
+*Dependencies*: requires catalog.py information in database to update the descriptions, prerequisites, and restrictions of each course. *An important note*: we can't scrape this information from the schedule of classes itself. If we take a look, clicking on the course title, like _Advanced Data Structures_ (from CSE 100) redirects us to the `Catalog <https://ucsd.edu/catalog/front/courses.html/>`_ description. 
 
 *Features*: 
-1. Seat tracking - Seat information for a course (Ex. CSE 100), based upon the number of seats remaining and available. Will be used to chart the seat-fill rate over time. This has some interesting possiblities, like examining the number of people that enroll for a given period of time (https://blink.ucsd.edu/instructors/courses/enrollment/start.html) to figure out the proposed demographic of a course (50% seniors, 20% juniors, etc. as an example). 
+1. Seat tracking - Seat information for a course (Ex. CSE 100), based upon the number of seats remaining and available. Will be used to chart the seat-fill rate over time. This has some interesting possiblities, like examining the number of people that enroll during their `enrollment time <https://blink.ucsd.edu/instructors/courses/enrollment/start.html/>`_ to figure out the proposed demographic of a course (50% seniors, 20% juniors, etc. as an example). 
 2. Waitlist & DEI - Used to determine if a class is waitlisted or not, and if a class is DEI-approved or not.
 3. Write to file, Write to DB - Multiple ways to export the data. Writing to file is helpful for when we want to compare if the data we parsed is accurate (comparing a multiprocessing version to a regular one for example). 
 4. Natural Restrictions - Restrictions are formatted. So, instead of having codes like XF JR SR, we have something more like: Open to juniors and seniors only. This more natural language is easier to understand and prevents visiting another site for a restrictions code legend.
