@@ -31,7 +31,7 @@ soc.py
 ~~~~~~~~~~~~
 *Description*: This program is responsible for fetching the latest course data from the `Schedule of Classes <https://act.ucsd.edu/scheduleOfClasses/scheduleOfClassesStudent.htm/>`_ for a given or the latest quarter, and uploading that data to Firebase after parsing, filtering, and comptuing some meta data (like seat tracking, waitlist, dei, etc.). 
 
-*Dependencies*: requires catalog.py information in database to update the descriptions, prerequisites, and restrictions of each course. *An important note*: we can't scrape this information from the schedule of classes itself. If we take a look, clicking on the course title, like _Advanced Data Structures_ (from CSE 100) redirects us to the `Catalog <https://ucsd.edu/catalog/front/courses.html/>`_ description. 
+*Dependencies*: requires catalog.py information in database to update the descriptions, prerequisites, and restrictions of each course. *An important note*: we can't scrape this information from the schedule of classes itself. If we take a look, clicking on the course title, like *Advanced Data Structures* (from CSE 100) redirects us to the `Catalog <https://ucsd.edu/catalog/front/courses.html/>`_ description. 
 
 *Features*: 
 1. Seat tracking - Seat information for a course (Ex. CSE 100), based upon the number of seats remaining and available. Will be used to chart the seat-fill rate over time. This has some interesting possiblities, like examining the number of people that enroll during their `enrollment time <https://blink.ucsd.edu/instructors/courses/enrollment/start.html/>`_ to figure out the proposed demographic of a course (50% seniors, 20% juniors, etc. as an example). 
