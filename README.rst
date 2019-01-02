@@ -34,6 +34,7 @@ soc.py
 *Dependencies*: requires catalog.py information in database to update the descriptions, prerequisites, and restrictions of each course. *An important note*: we can't scrape this information from the schedule of classes itself. If we take a look, clicking on the course title, like *Advanced Data Structures* (from CSE 100) redirects us to the `Catalog <https://ucsd.edu/catalog/front/courses.html/>`_ description. 
 
 *Features*: 
+
 1. Seat tracking - Seat information for a course (Ex. CSE 100), based upon the number of seats remaining and available. Will be used to chart the seat-fill rate over time. This has some interesting possiblities, like examining the number of people that enroll during their `enrollment time <https://blink.ucsd.edu/instructors/courses/enrollment/start.html/>`_ to figure out the proposed demographic of a course (50% seniors, 20% juniors, etc. as an example). 
 2. Waitlist & DEI - Used to determine if a class is waitlisted or not, and if a class is DEI-approved or not.
 3. Write to file, Write to DB - Multiple ways to export the data. Writing to file is helpful for when we want to compare if the data we parsed is accurate (comparing a multiprocessing version to a regular one for example). 
@@ -46,6 +47,7 @@ cape.py
 *Dependencies*: we need soc.py to run first. This should be obvious - we need the courses (and their teachers) we are fetching data for. 
 
 *Features*:
+
 1. Aggregate scores for Expected Grade, Received Grade, Study, and % Recommend Teacher. These are compute on a per course per teacher level to allow for a future feature to compare teacher's metrics for a course directly within the website. This will provide at a glance information on which course to consider over another, and which teacher within those courses to consider over another. Probably will be used in a table format or bar chart. 
 2. Entire Grade Distributions (breakdown of As, Bs, Cs, P, NP, etc.) per (teacher / course / department). We will use this in two ways. First, we will show this data as a pie chart or bar graph to compare between teachers for a course. Second, we will use the grade distributions per teacher, compared to the ones for the course in general to show the variance this teacher has over the course in general (if they follow the distribution of break from it). Finally, we can also extend this idea to include department averages so we can compare courses' distributions to see which ones we should choose.
 
