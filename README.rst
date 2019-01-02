@@ -1,8 +1,10 @@
-# Parser
+Parser
+======
 
 A suite of Python web-scraping programs. These programs are extensible, follow the functional programming paradigm, and make few assumptions. These programs are also compatible with Python 2.6+ and Python 3.0+, mostly PEP8 compliant, and use Firebase as a online drop-in database (which can be swapped for another one like AWS, Google Cloud Platform, or Azure). 
 
-# Goals
+Goals
+-----
 
 Here are some functionality and stretch goals designed to keep the programs as extensible and versatile as possible.
 
@@ -14,7 +16,8 @@ Here are some functionality and stretch goals designed to keep the programs as e
 6. Open to future improvements (multiprocessing, different ways to download data, etc.)
 7. Measure how often students visit certain sites and see if we can include that data into the current programs. For example, students visit Rate My Professor a lot. We can't include that data due to copyright restrictions. However, if students visit the restriction codes website to tell what a code means, we can integrate that data to make the user take one less visit to one less site. 
 
-# Programs
+Programs
+-----
 
 ## catalog.py
 *Description*: This program fetches the course descriptions, prerequisites, restrictions, and correct (unabbreviated) titles for each course in the entire catalog (we even fetch course data that isn't in the schedule of classes). This program need only run every once in a while, because the data rarely changes except for the addition of a new department or course. 
@@ -49,7 +52,9 @@ Here are some functionality and stretch goals designed to keep the programs as e
 3. podcast.py (fetch podcast data for a course).
 4. maps.py (fetch map locations with distances between classes) - This is purely optional and doesn't seem like it would provide a lot of benefit. It has a few uses thought, minimize distance between classes as a sorting functionality, show embedded maps of classes inline with course info, and possibly more. 
 
-# Tips
+Tips
+-----
+
 1. You can delete an entire firebase project and start from scratch. You can also create new projects to get a new, free 10gb limit.
 2. Often, there are multiple ways to download the data for verification. For example, if we want to test if multiprocessing works and doens't change the data, we can download the data from the program as a txt file and download the data from the multiprocessing version. We diff the files and compare the differences to see if they are valid differences (occuring naturally with time) or not. 
 3. The interface design for most of these programs has been updated (from the older parsing programs) to use timing decorators, print statements, and progress bars to improve the developer interface. We can use this information to make meaningful improvements quickly. For example, in the schedule of classes scraper, we list the number of classes. If the multiprocessing version has a different number, we know something went wrong. We can also use the timing information to figure out where we should look to improve. For example, scraping ~200 pages of data gives us around 10 minutes of pure network requests and updates. If we used some form of multiprocessing, we could significantly reduce this time. 
