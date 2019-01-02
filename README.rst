@@ -27,7 +27,7 @@ catalog.py
 
 *Features*: Described above.
 
-soc.py (formerly main.py)
+soc.py
 ~~~~~~~~~~~~
 *Description*: This program is responsible for fetching the latest course data from the `Schedule of Classes <https://act.ucsd.edu/scheduleOfClasses/scheduleOfClassesStudent.htm/>`_ for a given or the latest quarter, and uploading that data to Firebase after parsing, filtering, and comptuing some meta data (like seat tracking, waitlist, dei, etc.). 
 
@@ -39,7 +39,7 @@ soc.py (formerly main.py)
 3. Write to file, Write to DB - Multiple ways to export the data. Writing to file is helpful for when we want to compare if the data we parsed is accurate (comparing a multiprocessing version to a regular one for example). 
 4. Natural Restrictions - Restrictions are formatted. So, instead of having codes like XF JR SR, we have something more like: Open to juniors and seniors only. This more natural language is easier to understand and prevents visiting another site for a restrictions code legend.
 
-cape.py (formerly grade.py)
+cape.py
 ~~~~~~~~~~~~
 *Description*: This program is responsible for fetching the latest CAPE data for all courses for a given quarter. We retrieve that data, update each course object, compute some meta data, and upload the new object to Firebase.
 
@@ -52,9 +52,8 @@ cape.py (formerly grade.py)
 More Programs (TODO)
 ~~~~~~~~~~~~
 1. library.py (fetch book store data for a course, if the books are required or not, and maybe some book icons).
-2. plans.py (fetch 4-year major plans for all majors, all departments, all colleges, and for the past 5 ~ 6 years). 
-3. podcast.py (fetch podcast data for a course).
-4. maps.py (fetch map locations with distances between classes) - This is purely optional and doesn't seem like it would provide a lot of benefit. It has a few uses thought, minimize distance between classes as a sorting functionality, show embedded maps of classes inline with course info, and possibly more. 
+2. podcast.py (fetch podcast data for a course).
+3. maps.py (fetch map locations with distances between classes) - This is purely optional and doesn't seem like it would provide a lot of benefit. It has a few uses thought, minimize distance between classes as a sorting functionality, show embedded maps of classes inline with course info, and possibly more. 
 
 Tips
 -----
