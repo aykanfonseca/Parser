@@ -10,7 +10,7 @@ Here are some functionality and stretch goals designed to keep the programs as e
 
 1. Compatible with Python 2.6+ and Python 3.0+
 2. Functional programming paradigm
-3. Single Responsibility (https://en.wikipedia.org/wiki/Single_responsibility_principle) 
+3. `Single Responsibility <https://en.wikipedia.org/wiki/Single_responsibility_principle/>`_ 
 4. Clear variable / function names as opposed to writing unmaintainable comments.
 5. As Pythonic code as possible (readability over performance)
 6. Open to future improvements (multiprocessing, different ways to download data, etc.)
