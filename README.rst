@@ -19,14 +19,16 @@ Here are some functionality and stretch goals designed to keep the programs as e
 Programs
 -----
 
-## catalog.py
-*Description*: This program fetches the course descriptions, prerequisites, restrictions, and correct (unabbreviated) titles for each course in the entire catalog (we even fetch course data that isn't in the schedule of classes). This program need only run every once in a while, because the data rarely changes except for the addition of a new department or course. 
+catalog.py
+~~~~~~~~~~~~
+**Description**: This program fetches the course descriptions, prerequisites, restrictions, and correct (unabbreviated) titles for each course in the entire catalog (we even fetch course data that isn't in the schedule of classes). This program need only run every once in a while, because the data rarely changes except for the addition of a new department or course. 
 
 *Dependencies*: None. We usually run this first, ensure the data is in Firebase, and then proceed with the rest.
 
 *Features*: Described above.
 
-## soc.py (formerly main.py)
+soc.py (formerly main.py)
+~~~~~~~~~~~~
 *Description*: This program is responsible for fetching the latest course data from the `Schedule of Classes <https://act.ucsd.edu/scheduleOfClasses/scheduleOfClassesStudent.htm/>`_ for a given or the latest quarter, and uploading that data to Firebase after parsing, filtering, and comptuing some meta data (like seat tracking, waitlist, dei, etc.). 
 
 *Dependencies*: requires catalog.py information in database to update the descriptions, prerequisites, and restrictions of each course. *An important note*: we can't scrape this information from the schedule of classes itself. If we take a look, clicking on the course title, like _Advanced Data Structures_ (from CSE 100) redirects us to the `Catalog <https://ucsd.edu/catalog/front/courses.html/>`_ description. 
@@ -37,7 +39,8 @@ Programs
 3. Write to file, Write to DB - Multiple ways to export the data. Writing to file is helpful for when we want to compare if the data we parsed is accurate (comparing a multiprocessing version to a regular one for example). 
 4. Natural Restrictions - Restrictions are formatted. So, instead of having codes like XF JR SR, we have something more like: Open to juniors and seniors only. This more natural language is easier to understand and prevents visiting another site for a restrictions code legend.
 
-## cape.py (formerly grade.py)
+cape.py (formerly grade.py)
+~~~~~~~~~~~~
 *Description*: This program is responsible for fetching the latest CAPE data for all courses for a given quarter. We retrieve that data, update each course object, compute some meta data, and upload the new object to Firebase.
 
 *Dependencies*: we need soc.py to run first. This should be obvious - we need the courses (and their teachers) we are fetching data for. 
@@ -46,7 +49,8 @@ Programs
 1. Aggregate scores for Expected Grade, Received Grade, Study, and % Recommend Teacher. These are compute on a per course per teacher level to allow for a future feature to compare teacher's metrics for a course directly within the website. This will provide at a glance information on which course to consider over another, and which teacher within those courses to consider over another. Probably will be used in a table format or bar chart. 
 2. Entire Grade Distributions (breakdown of As, Bs, Cs, P, NP, etc.) per (teacher / course / department). We will use this in two ways. First, we will show this data as a pie chart or bar graph to compare between teachers for a course. Second, we will use the grade distributions per teacher, compared to the ones for the course in general to show the variance this teacher has over the course in general (if they follow the distribution of break from it). Finally, we can also extend this idea to include department averages so we can compare courses' distributions to see which ones we should choose.
 
-## More Programs (TODO)
+More Programs (TODO)
+~~~~~~~~~~~~
 1. library.py (fetch book store data for a course, if the books are required or not, and maybe some book icons).
 2. plans.py (fetch 4-year major plans for all majors, all departments, all colleges, and for the past 5 ~ 6 years). 
 3. podcast.py (fetch podcast data for a course).
