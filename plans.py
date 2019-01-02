@@ -11,54 +11,15 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support import expected_conditions as EC
 
-PLANS_URL = "https://plans.ucsd.edu"
+# Constants
+from constants import color, time_taken, time_taken_main, PLANS_URL
+
 COLLEGES = set(['Revelle', 'John Muir', 'Thurgood Marshall',
                 'Earl Warren', 'Eleanor Roosevelt', 'Sixth'])
 
 
 driver = webdriver.PhantomJS()
 driver.get(PLANS_URL)
-
-
-class color:
-    PURPLE = '\033[95m'
-    CYAN = '\033[96m'
-    DARKCYAN = '\033[36m'
-    BLUE = '\033[94m'
-    GREEN = '\033[92m'
-    YELLOW = '\033[93m'
-    RED = '\033[91m'
-    BOLD = '\033[1m'
-    UNDERLINE = '\033[4m'
-    END = '\033[0m'
-
-
-def time_taken_main(func):
-    '''A decorator function used specifically to time main()'s execution'''
-
-    def wrapper(*args, **kw):
-        start = time.time()
-        result = func(*args, **kw)
-        end = time.time()
-        print(color.BOLD + color.PURPLE + "### Total Time taken: " +
-              str(end - start) + '\n' + color.END)
-        return result
-
-    return wrapper
-
-
-def time_taken(func):
-    '''A decorator function used to time the execution of functions.'''
-
-    def wrapper(*args, **kw):
-        start = time.time()
-        result = func(*args, **kw)
-        end = time.time()
-        print(color.BOLD + color.GREEN + "- Time taken: " +
-              str(end - start) + '\n' + color.END)
-        return result
-
-    return wrapper
 
 
 def get_options(web_element):
