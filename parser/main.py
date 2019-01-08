@@ -1,17 +1,17 @@
-'''Python program to scrape UC San Diego's Schedule of Classes. Created by Aykan Fonseca.'''
+"""Python program to scrape UC San Diego's Schedule of Classes. Created by Aykan Fonseca."""
 
 # Pip install packages.
 from selenium import webdriver
 # from selenium.webdriver.common.by import By
 
 # Constants
-from constants import SOC_URL, time_taken, time_taken_main
+from constants import SOC_URL, timer, timer_main
 
 driver = webdriver.PhantomJS()
 driver.get(SOC_URL)
 
 
-@time_taken
+@timer
 def get_departments():
     """
     Description: Gets all the departments listed in the drop down as they are displayed.
@@ -24,7 +24,7 @@ def get_departments():
     return [department.text for department in departments]
 
 
-@time_taken
+@timer
 def get_department_codes():
     """
     Description: Gets all the department codes listed in drop down. Ex. CSE or ANAR
@@ -34,10 +34,10 @@ def get_department_codes():
     departments = driver.find_element_by_id(
         "selectedSubjects").find_elements_by_tag_name("option")
 
-    return [department.text.partition(' ')[0] for department in departments]
+    return [department.text.partition(" ")[0] for department in departments]
 
 
-@time_taken
+@timer
 def get_quarters():
     """
     Description: Gets all the quarters listed in drop down. Ex. WI19 or FA18
@@ -47,7 +47,7 @@ def get_quarters():
     quarters = driver.find_element_by_id(
         "selectedTerm").find_elements_by_tag_name("option")
 
-    return [quarter.get_attribute('value') for quarter in quarters]
+    return [quarter.get_attribute("value") for quarter in quarters]
 
 
 def spin():
@@ -59,7 +59,7 @@ def spin():
     html = driver.page_source
 
 
-@time_taken_main
+@timer_main
 def main():
     print get_departments()
     print get_quarters()

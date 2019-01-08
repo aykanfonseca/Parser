@@ -1,4 +1,4 @@
-'''Python program to UC San Diego's Course and Professor Evaluations (CAPE). Created by Aykan Fonseca.'''
+"""Python program to UC San Diego's Course and Professor Evaluations (CAPE). Created by Aykan Fonseca."""
 
 # Builtins
 import time
@@ -9,13 +9,13 @@ from firebase import firebase
 import requests
 
 # Constants
-from constants import color, FIREBASE_DB, FIREBASE_DB2, CAPE_URL, HEADERS
+from constants import color, timer, timer_main, FIREBASE_DB, FIREBASE_DB2, CAPE_URL, HEADERS
 
 # Global Variables.
 SESSION = requests.Session()
 
 
-@time_taken
+@timer
 def fetch_data():
     """Fetches course data from Firebase to use for CAPE fetching."""
 
@@ -29,10 +29,10 @@ def fetch_data():
     courses = database.get("/quarter/" + current_quarter + "/", None)
 
     for course in courses:
-        print courses[course]['sections']
+        print courses[course]["sections"]
 
 
-@time_taken_main
+@timer_main
 def main():
     write_access = False
 
