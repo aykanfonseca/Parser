@@ -654,7 +654,7 @@ def main():
     quarter = setup()
 
     page_numbers = range(1, NUM_PAGES_TO_PARSE + 1)
-    page_numbers = range(1, 70)
+    # page_numbers = range(1, 70)
 
     urls = [SOC_URL + str(num) for num in page_numbers]
 

@@ -2,6 +2,7 @@
 
 # Pip install packages.
 from selenium import webdriver
+from selenium.webdriver.support.ui import Select
 # from selenium.webdriver.common.by import By
 
 # Constants
@@ -61,8 +62,24 @@ def spin():
 
 @timer_main
 def main():
-    print get_departments()
-    print get_quarters()
+    # print get_departments()
+    # print get_quarters()
+
+    dropdown = driver.find_element_by_id("selectedSubjects")
+
+    for option in dropdown.find_elements_by_tag_name("option"):
+        Select(dropdown).select_by_visible_text(option.text)
+
+    driver.find_element_by_id("socFacSubmit").submit()
+
+    tr_elements = driver.find_elements_by_tag_name('tr')
+
+    for elem in tr_elements:
+        print elem.text
+        print '\n'
+
+    for thing in driver.find_elements_by_tag_name("a"):
+        print thing.get_attribute("href")
 
 
 if __name__ == "__main__":
